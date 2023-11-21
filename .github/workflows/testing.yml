@@ -32,7 +32,7 @@ jobs:
           KC_HEALTH_ENABLED: true
           KC_METRICS_ENABLED: true
         options: >-
-          --entrypoint start-dev --auto-build --http-port=8100 --https-port=8101 --log-level=INFO --db=postgres --features=token-exchange --db-url=jdbc:postgresql://db:5432/keycloak --db-username=postgres --db-password=postgres --import-realm
+          --entrypoint "kc.sh start-dev --auto-build --http-port=8100 --https-port=8101 --log-level=INFO --db=postgres --features=token-exchange --db-url=jdbc:postgresql://db:5432/keycloak --db-username=postgres --db-password=postgres --import-realm"
         ports:
           # Maps tcp port 5432 on service container to the host
           - 8100:8100
