@@ -1,2 +1,2 @@
-#!/bin/bash
-/opt/keycloak/bin/kc.sh start-dev --auto-build --http-port=8100 --https-port=8101 --log-level=INFO --db=postgres --features=token-exchange --db-url=jdbc:postgresql://db:5432/keycloak --db-username=postgres --db-password=postgres --import-realm"
+#!/bin/bash -ex
+/opt/keycloak/bin/kc.sh start-dev --auto-build --http-port=8100 --https-port=8101 --log-level=INFO --db=postgres --features=token-exchange --db-url=jdbc:postgresql://db:5432/keycloak --db-username=postgres --db-password=postgres --import-realm
