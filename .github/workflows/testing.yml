@@ -37,16 +37,8 @@ jobs:
           KC_METRICS_ENABLED: true
           KC_HTTP_PORT: 8100
           KC_HTTPS_PORT: 8101
-          KC_LOGLEVEL: INFO
-
-        args: ["start-dev",
-        "--auto-build",
-        "--http-port=8100",
-        "--https-port=8101",
-        "--log-level=INFO",
-        "--db=postgres",
-        "--features=token-exchange",
-        "--db-url=", "--db-username=postgres", "--db-password=postgres", "--import-realm"]
+          KC_LOG_LEVEL: INFO
+          KC_FILE: /opt/keycloak/data/import/keycloak-test-realm.json
         ports:
           # Maps tcp port 5432 on service container to the host
           - 8100:8100
