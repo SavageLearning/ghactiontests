@@ -46,6 +46,8 @@ jobs:
         volumes:
           - "./keycloak-test-realm.json:/opt/keycloak/data/import/keycloak-test-realm.json"
     steps:
+    - name: Show Keycloak logs
+      run: docker logs $(docker ps -a -q -
     - uses: actions/checkout@v3
     - name: Show Docker containers
       run: docker ps
