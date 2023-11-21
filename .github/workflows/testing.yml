@@ -27,18 +27,12 @@ jobs:
       keycloak:
         image: quay.io/keycloak/keycloak:latest
         env:
-          KC_DB: postgres
-          KC_DB_URL: jdbc:postgresql://localhost:5432/keycloak
-          KC_DB_USERNAME: postgres
-          KC_DB_PASSWORD: postgres
           KEYCLOAK_ADMIN: admin
           KEYCLOAK_ADMIN_PASSWORD: admin
           KC_HEALTH_ENABLED: true
           KC_METRICS_ENABLED: true
-          KC_HTTP_PORT: 8100
-          KC_HTTPS_PORT: 8101
-          KC_LOG_LEVEL: INFO
-          KC_FILE: /opt/keycloak/data/import/keycloak-test-realm.json
+        options: >-
+          --entrypoint start-dev --auto-build --http-port=8100 --https-port=8101 --log-level=INFO --db=postgres --features=token-exchange --db-url=jdbc:postgresql://db:5432/keycloak --db-username=postgres --db-password=postgres --import-realm
         ports:
           # Maps tcp port 5432 on service container to the host
           - 8100:8100
