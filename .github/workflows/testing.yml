@@ -33,6 +33,7 @@ jobs:
           KC_METRICS_ENABLED: true
         # Set health checks to wait until postgres has started
         options: >-
+          start-dev
           --auto-build
           --http-port=8100
           --https-port=8101
