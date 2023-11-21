@@ -31,14 +31,15 @@ jobs:
           KEYCLOAK_ADMIN_PASSWORD: admin
           KC_HEALTH_ENABLED: true
           KC_METRICS_ENABLED: true
-        options: >-
-          --entrypoint "/opt/keycloak/bin/kc.sh"
         ports:
           # Maps tcp port 5432 on service container to the host
           - 8100:8100
           - 8101:8101
         volumes:
           - "./keycloak-test-realm.json:/opt/keycloak/data/import/keycloak-test-realm.json"
+        options: >-
+           --entrypoint "/opt/keycloak/bin/kc.sh start-dev --auto-build --http-port=8100 --https-port=8101 --log-level=INFO --db=postgres --features=token-exchange --db-url=jdbc:postgresql://db:5432/keycloak --db-username=postgres --db-password=postgres --import-realm"
+
     steps:
     - name: Show Keycloak logs
       run: docker logs $(docker ps -a -q --filter ancestor=quay.io/keycloak/keycloak:latest --format="{{.ID}}")
